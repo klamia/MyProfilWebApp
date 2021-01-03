@@ -1,0 +1,220 @@
+/* ==============================================
+   FEUILLE DE STYLES DES GABARITS HTML/CSS --- 03
+   � Elephorm & Alsacreations.com
+   Conditions d'utilisation:
+   http://creativecommons.org/licenses/by/2.0/fr/
+   ============================================== */
+
+
+/* --- COULEURS --- */
+
+/* Note: vous pouvez modifier simplement l'aspect de ce gabarit en modifiant
+   uniquement les couleurs de fond (propri�t�s background) et les couleurs
+   du texte (propri�t� color).
+   Pour modifier la disposition des blocs, voir plus bas dans la feuille de
+   styles la partie �positionnement�. */
+
+/* G�n�ral */
+body {
+	color: #F0E39E;
+	/*background: #2C2F22;*/
+
+	background:#6B8E23;
+}
+a {
+	/*color: #FF6533;*/
+	color:#6B8E23;
+	font-weight: bold;
+}
+a:hover, a:focus {
+	color: #6B8E23;
+	
+}
+strong {
+	color: #A1B55D;
+}
+
+/* Page */
+#global {
+	background: #181A12;
+}
+
+/* Navigation */
+#navigation {
+	/*background: #181A12;*/
+	/*background: white;*/
+	background: #F0E39E;
+}
+#navigation a {
+	color: #6B8E23;
+	
+}
+#navigation a:hover, #navigation a:focus {
+	background: #000000;
+}
+
+/* Contenu principal */
+#contenu {
+	color: #363B29;
+	background: #cbd888;
+}
+/*
+#contenu a {
+	/*color: #332510;
+	color: #6B8E23;
+	font-weight:bold;
+	margin-left:220px;
+	
+}*/
+#contenu a:hover, #contenu a:focus {
+	color: #6E5122;
+}
+#contenu strong {
+	color: #181A12;
+}
+
+/* Pied de page */
+#contact {
+	color: #E6A948;
+}
+
+/* --- POSITIONNEMENT --- */
+
+/* Page */
+html, body {
+	height: 100%; /* Voir -> Note 1 ci-dessous */
+}
+body {
+	padding: 0;
+}
+#global {
+	min-height: 100%; /* -> 1 */
+	width:750px;
+	overflow: hidden; /* -> 2 */
+	margin-left: auto;
+	margin-right: auto; /* -> 3 */
+}
+
+/* En-t�te */
+#entete {
+	padding: 15px 20px 10px 20px;
+}
+#entete h1, #entete h2 {
+	/*margin: 0 ;*/
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+	font-weight: bold;
+	
+	
+}
+#entete h1 img {
+	/*float: left;
+	margin: 7px 20px 10px 0;*/
+	display: block;
+    margin: auto;
+	
+}
+
+
+/* Menu de navigation */
+#navigation {
+	padding: 12px 15px;
+}
+#navigation ul {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+#navigation li {
+	display: inline;
+}
+#navigation a {
+	padding: 6px;
+	line-height: 1.5;
+	font-size: .9em;
+	text-decoration: none;
+}
+
+/* Contenu */
+#contenu {
+	padding: 10px 20px;
+}
+#contenu > :first-child {
+	margin-top: 10px;
+}
+#contenu p, #contenu li {
+	line-height: 1.5;
+}
+#contenu h2 {
+text-align:center;
+color:#848F63;
+font-weight: bold;
+}
+
+#contenu img {
+	
+float: left;
+	margin: -20px 0 0 0;
+}
+#contenu h4{
+	margin:0;
+}
+#domaineRecherche{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	
+	
+}
+#projetRecherche{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+}
+#activitéEns{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+}
+#productionScient{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+}
+
+
+
+
+
+
+/* Pied de page */
+#contact {
+	padding: 15px 20px;
+	font-size: .85em;
+	text-align:center;
+	
+}
+#contact p {
+	margin: .5em 10px;
+	
+}
+#contact h2{
+	color:#F0E39E;
+	padding:0;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+	font-weight: bold;
+}
+
+
+

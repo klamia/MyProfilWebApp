@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+ <h:head>
+ 
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/template3Principale3.css" />
+</h:head>
+<h:body >
+ <div id="global">   
+    
+    <ui:insert name="header" >
+      <div id="entete">
+        <h:form> 
+		 <p:graphicImage value="/images/cerist1.png" styleClass ="styleImageFooter" />
+	    </h:form>
+       </div>
+    </ui:insert>
+    
+    
+    <ui:insert name="nav" >
+       <div id="navigation">
+       <h:form> 
+		<p:toolbar  styleClass="toolbarStyleEntete">
+		<p:toolbarGroup align="left">
+		   <!--  
+		   <p:outputLabel styleClass="labelAccueil2Style">Welcome</p:outputLabel>
+		   <p:outputLabel styleClass="labelAccueil2Style">Login</p:outputLabel>
+		   -->
+		   </p:toolbarGroup>  
+		<p:toolbarGroup align="right">
+		
+		<p:commandButton  value="Page Principale" styleClass="commandBPrincipaleStyle" image="ui-icon-home" action="accueil.xhtml"/>
+		<p:commandButton  value="Se deconnecter" styleClass="commandBDeconnect2Style" image="ui-icon-unlocked"/>
+		</p:toolbarGroup> 
+        </p:toolbar> 
+	   </h:form>
+       </div>
+	</ui:insert>
+    
+    
+    <ui:insert name="content" >
+    <div id="contenu">
+        <h:form>
+        <p:toolbar  styleClass="toolbarStyleContenu">
+        <p:toolbarGroup align="left">
+		    <p:commandButton value="Ajouter" id="ajout" actionListener="#"  icon="ui-icon-plus" styleClass="buttonClass"/>
+		 </p:toolbarGroup>  
+		<p:toolbarGroup align="right">
+        <p:commandButton value="Consultation/Edition" id="consult" actionListener="#"  icon="ui-icon-disk" styleClass="buttonClass" />
+        <p:commandButton value="Statistiques" id="stat" actionListener="#"  icon="ui-icon-disk" styleClass="buttonClass" />
+        </p:toolbarGroup> 
+        </p:toolbar>
+        <!-- 
+        <p:growl id="growl" showDetail="true" sticky="false"  />
+            <p:dataTable var="" value="#" id="table" widgetVar="" styleClass ="table2"  border="0" cellpadding="2" cellspacing="0"
+                         emptyMessage="" paginator="true" rows="5" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" >
+
+ 
+                <f:facet name="header">
+                <p class="tableheader"> <span>Liste Des Demandes Acquisition Carte </span></p>
+                </f:facet>
+                
+                
+                <p:column  >
+                    <p:commandButton id="voir" icon="ui-icon-search" update="" action="#" oncomplete="" title="Aperçu"/>
+                    <p:spacer width="5" height="5" />
+                    <p:commandButton id="editer" update="" icon="ui-icon-arrowrefresh-1-w" 
+                    action="#" oncomplete="" title="Editer"/>
+                </p:column>
+                
+                <p:column headerText="Code Demande" id="demandeId" filterBy="#" filterMatchMode="exact" >
+                    <h:outputText value="#" />
+                </p:column>
+                <p:column headerText="Num Bon Commande" id="numBC" filterBy="#" filterMatchMode="exact" >
+                    <h:outputText value="#" />
+                </p:column>
+                
+                <p:column headerText="Date Demande" id="DateDemande"   >
+                    <h:outputText value="#" />
+                </p:column>
+                
+                <p:column headerText="Agence BEA" id="agencebea"  >
+                    <h:outputText value="#" />
+                </p:column>
+                
+                <p:column headerText="Nom Demandeur" id="NomDemandeur"   >
+                    <h:outputText value="#" />
+                </p:column>
+                
+                <p:column headerText="Prenom Demandeur" id="PrenomDemandeur" >
+                    <h:outputText value="#" />
+                </p:column>
+                
+               
+                </p:dataTable> 
+                 -->
+        </h:form>
+    </div>
+    </ui:insert>
+    
+    <ui:insert name="footer" >
+    <div id="pied"> 
+       <h3>CERIST &copy; 2016 Gestion Ressource Humaine</h3>
+       <h4>Conception et réalisation : Division DSISM</h4>	
+      </div> 
+     </ui:insert>
+   
+ </div>   
+</h:body>
+</html>

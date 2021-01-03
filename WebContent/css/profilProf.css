@@ -1,0 +1,275 @@
+/* G�n�ral */
+
+
+
+
+
+/* Page */
+#globalProfil {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5f6f6+0,dbdce2+21,b8bac6+49,dddfe3+80,f5f6f6+100;Grey+Pipe */
+/*background: rgb(245,246,246); 
+background: -moz-linear-gradient(left, rgba(245,246,246,1) 0%, rgba(219,220,226,1) 21%, rgba(184,186,198,1) 49%, rgba(221,223,227,1) 80%, rgba(245,246,246,1) 100%); 
+background: -webkit-linear-gradient(left, rgba(245,246,246,1) 0%,rgba(219,220,226,1) 21%,rgba(184,186,198,1) 49%,rgba(221,223,227,1) 80%,rgba(245,246,246,1) 100%);
+background: linear-gradient(to right, rgba(245,246,246,1) 0%,rgba(219,220,226,1) 21%,rgba(184,186,198,1) 49%,rgba(221,223,227,1) 80%,rgba(245,246,246,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=1 );*/
+background: #C0C0C0;
+}
+
+/*Entete*/
+#enteteProfil{
+	height: 215px;
+}
+#enteteProfilTwo{
+	height: 100px;
+	
+	
+}
+.nomPrenomLabel{
+	color:#1A3867;
+	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif !important;
+	font-weight: bold !important;
+	font-size: 2.8em !important;
+	font-style: italic;
+	margin-left: 80px;
+	
+}
+.gradeLabel{
+	color:#1A3867;
+	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif !important;
+	font-weight: normal !important;
+	font-size: 1.8em !important;
+	margin-left: 90px;
+}
+.restedesLabel{
+	color:#1A3867;
+	font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif;
+	font-size: 1em; 
+	line-height: 1.65; 
+	margin-left: 40px;
+}
+
+
+.restedesLabelTwo{
+	color:#1A3867;
+	font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif;
+	font-size: 1em; 
+	line-height: 1.65; 
+	margin-left: 267px;
+}
+
+.styleImageEntete {
+ 
+  float:left;
+  max-width:200px; max-height:205px; min-width:200px; min-height:205px;
+}
+
+/* Navigation */
+#navigationProfil {
+	/*background: #181A12;*/
+	/*background: white;*/
+	background: #1A3867 ;
+	/*background:#dad8f3;*/
+	border-radius: 10px ;
+	width:790px;
+	margin:0 3px;
+	border: 2px solid #4B5A8F;
+}
+#navigationProfil a  {
+	/*color: #4B0082;*/
+	color: #1A3867;
+	
+}
+
+
+
+#navigationProfil a span:hover, #navigationProfil a span:focus {
+	background: #D3D3D3;
+	color:#4B5A8F;
+	
+}
+
+/* Contenu principal */
+#contenuProfil {
+	
+	background: #C0C0C0;
+	
+}
+
+
+
+/* Pied de page */
+#pied-page {
+	color: #a89fe5;
+	height: 90px;
+	background: #FFFAFA;;
+}
+
+/* --- POSITIONNEMENT --- */
+
+/* Page */
+
+#globalProfil {
+	min-height: 100%; /* -> 1 */
+	width:800px;
+	overflow: hidden; /* -> 2 */
+	margin-left: auto;
+	margin-right: auto; /* -> 3 */
+}
+
+/* En-t�te */
+#enteteProfil {
+	padding: 20px 15px 15px 15px;
+}
+#enteteProfilTwo {
+	padding: 0px 15px 0px 0px;
+}
+
+.styleImageEntete {
+  margin: 05px;
+}
+
+
+/* Menu de navigation */
+#navigationProfil {
+	/*padding: 12px 15px;*/
+	padding: 12px 0px;
+	
+}
+#navigationProfil ul {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+#navigationProfil li {
+	display: inline;
+}
+#navigationProfil a {
+	padding: 0px;
+	line-height: 1.5;
+	font-size: .9em;
+	text-decoration: none;
+}
+.bouton1{
+	font-family: 'conduititc';
+	font-size: 16px;
+	padding: 3px 10px 3px 10px;
+	background: #f6f6f6;
+	border-radius: 4px;
+	border: 1px solid #a89fe5;
+	transition: background 0.7s;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+}
+
+/* Contenu */
+#contenuProfil {
+	padding: 10px 20px;
+}
+#contenuProfil > :first-child {
+	margin-top: 10px;
+}
+#contenuProfil p, #contenuProfil li {
+	line-height: 1.5;
+}
+#contenuProfil h2 {
+text-align:center;
+color:#1A3867;
+font-weight: bold;
+}
+
+
+#contenuProfil img {
+	
+float: left;
+	margin: -20px 0 0 0;
+}
+#contenuProfil h4{
+	margin:0;
+}
+#domaineRechercheProfil{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	border-radius: 20px ;
+	
+	
+}
+#projetRechercheProfil{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	border-radius: 20px;
+}
+#activitéEnsProfil{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	border-radius: 20px;
+}
+#productionScientProfil{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	border-radius: 20px;
+}
+
+
+/* Pied de page */
+#pied-page {
+	padding: 15px 20px;
+	font-size: .85em;
+	text-align:center;
+	
+}
+.styleImageFooter {
+
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+   
+	/*padding-left : 1%;*/
+	background : #FFFAFA;
+}
+#pied-page p {
+	margin: .5em 10px;
+	
+}
+#pied-page h2{
+	color:#a89fe5;
+	
+	font-weight: bold;
+}
+
+.ui-inputtextarea.texteAreaProfil{
+	color:#1A3867;
+	font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif;
+	font-size: 1em; 
+	line-height: 1.65;
+	margin: 5px;
+	padding: 5px;
+	border : none;
+	box-shadow: none;
+}
+#pageProfiLink{
+	height: 30px;
+	width:100%;
+	background:#a89fe5;
+	padding-left :690px;
+	padding-top: 10px;
+	
+}
+
+#pageAnnuairelink{
+	height: 30px;
+	width:100%;
+	background:#a89fe5;
+	padding-left :630px;
+	padding-top: 10px;
+}

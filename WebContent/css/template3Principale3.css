@@ -1,0 +1,359 @@
+@CHARSET "UTF-8";
+/* ==============================================
+   FEUILLE DE STYLES DES GABARITS HTML/CSS --- 01
+   © Elephorm & Alsacreations.com
+   Conditions d'utilisation:
+   http://creativecommons.org/licenses/by/2.0/fr/
+   ============================================== */
+
+
+/* --- COULEURS --- */
+
+/* Note: vous pouvez modifier simplement l'aspect de ce gabarit en modifiant
+   uniquement les couleurs de fond (propriétés background) et les couleurs
+   du texte (propriété color).
+   Pour modifier la disposition des blocs, voir plus bas dans la feuille de
+   styles la partie «positionnement». */
+
+/* Général */
+
+html{
+margin: 0 auto ;
+height:99%;
+width:100%;
+
+}
+
+
+body {
+	color: #000;
+	
+	background: #FFFAFA;
+	/*
+	background: rgba(255,255,255,1);
+background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(55%, rgba(239,236,248,1)), color-stop(65%, rgba(228,225,245,1)), color-stop(100%, rgba(218,216,243,1)));
+background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dad8f3', GradientType=1 );
+*/
+font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif; /* 3 */
+font-size: .8em; /* -> 4 */
+
+}
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+	margin: 1em 0 .5em 0; /* -> 6 */
+}
+h1, h2 {
+	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
+	font-weight: normal; /* -> 7 */
+}
+h1 {
+	font-size: 3em; /* -> 8 */
+	font-style: italic;
+}
+h2 {font-size: 1.8em;}
+h3 {font-size: 1.2em;}
+h4 {font-size: 1em;}
+
+/* Affichage Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+body {	
+font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif; /* 3 */
+font-size: .9em; /* -> 4 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 1em 0 .5em 0; /* -> 6 */
+}
+h1, h2 {
+	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
+	font-weight: normal; /* -> 7 */
+}
+h1 {
+	font-size: 3em; /* -> 8 */
+	font-style: italic;
+}
+h2 {font-size: 1.8em;}
+h3 {font-size: 1.5em;}
+h4 {font-size: 1.2em;}
+
+
+
+}
+
+
+                                    /* En-tête */
+#entete {
+	color: #000000;
+	background: #FFFAFA; 
+	border-style: none ;
+
+	
+}
+
+.styleImageFooter {
+	
+	/*Pour centrer une image*/
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+    /*
+    display: block;
+    float: left;
+    
+    margin:10px 0 0 0 ;	
+	padding-left : 1%;*/
+	width : 400px;
+	height:85px;
+	opacity :0.8;
+	background : #FFFAFA;
+}
+
+
+
+
+                                        /* Navigation */
+#navigation {
+	background: #FFFAFA;
+	
+}
+
+.ui-toolbar.toolbarStyleEntete{
+	
+	background: #FFFAFA;
+	/*border:solid 1px #FFDAB9 ;*/
+	/*margin: -10px 0 0 0 ;*/
+	border:none;
+	margin:0;
+	padding:0 0 0 0;
+	
+	
+	/*box-shadow:   0px 0px 8px #FFDAB9;*/
+		
+}
+
+
+
+.ui-button.commandBPrincipaleStyle {
+	
+	margin-right: 12px;
+	/*margin-left:80px;*/
+	/*background: #FFEFD5 ;*/
+	/*background:#FFDAB9;*/
+	background:#dad8f3 ;
+	color: #000000;
+	box-shadow: 0px 0px 8px #a89fe5 ;
+	opacity: 0.7;
+}
+.ui-button.commandBDeconnect2Style {
+	margin-right: 180px;
+	/*background: #FFDAB9 ;*/
+	background:#dad8f3 ;
+	color: #000000;
+	box-shadow: 0px 0px 8px #a89fe5 ;
+	opacity: 0.7;
+}
+
+
+
+                                      /* Contenu principal */
+#contenu {
+	color: #000000;
+	/*background: #FFFAFA;*/
+	background: rgba(255,255,255,1);
+background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(55%, rgba(239,236,248,1)), color-stop(65%, rgba(228,225,245,1)), color-stop(100%, rgba(218,216,243,1)));
+background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dad8f3', GradientType=1 );
+   border: solid 1px #a89fe5;
+}
+
+.ui-toolbar.toolbarStyleContenu{
+	background: inherit;
+	/*border:solid 1px #FFDAB9 ;*/
+	/*margin: -10px 0 0 0 ;*/
+	border:none;
+	margin:5px;
+	padding:0;
+	
+	
+	/*box-shadow:   0px 0px 8px #FFDAB9;*/
+}
+
+.ui-button.buttonClass {
+	margin-right :6px;
+	font-size: 12px;
+	font-weight: bold;
+	/*background: #FFEFD5;*/
+	background: #FFEFD5;
+	opacity:0.9;
+	color: #000000;
+	box-shadow: 0px 0px 8px #FFDAB9;
+	border: 2px solid #FFDAB9 ;
+}
+
+
+
+                                                /* Pied de page */
+                                                
+#pied {
+	color: #000000;
+	background: #FFFAFA;
+	/* position:absolute;*/
+}
+
+
+              /* --- POSITIONNEMENT --- */
+
+                       /* Page */
+body {
+	padding:0;
+    margin:0 auto;
+    height:100%;
+    width:100%;
+	
+}
+
+/* Container Global */
+#global{
+padding:0;
+height:100%;
+width:100%;
+margin:0 auto;
+/*height: -webkit-calc(100% - 100px);  /* para Chrome */ 
+  height: -moz-calc(100% - 100px);     /* para Firefox */
+  height: calc(100% - 100px);          /* para suporte nativo */
+}
+
+                 /* En-tête */
+
+#entete {
+	/*padding: 0 20px 10px 20px; */
+	margin:0 1%;
+	max-width:100%;
+    min-height:13%;
+  padding:0;
+/*border: solid 1px #FFDAB9;*/
+}
+
+
+           /* Menu de navigation */
+           
+#navigation {
+	/*padding: 12px 15px;*/
+	margin:0 1%;
+	padding:0;
+	max-width:100%;
+    min-height:5%;
+  /* border: solid 1px #FFDAB9;*/
+}
+
+
+
+                              /* Contenu */
+
+#contenu {	
+	margin:0.5% 15% 0.5% 15%;
+	max-width:100%;
+   height:82%;
+   /* height:69%;*/
+    padding:0;
+  /*  border: solid 4px #FFDAB9;*/
+  
+}
+
+
+                            /* Pied de page */
+#pied {
+	/*float: right;*/
+	margin: 0 1%;
+	padding: 0;
+    font-size: .85em;
+    min-height:12%;
+   max-width:100%;
+   /*border: solid 1px #FFDAB9; */
+}
+
+#pied h3 {
+   
+	text-align:center;
+	margin:0.5% 0 0 0;
+	padding:0;
+	/*padding-top : 2%;*/
+	color: #002266;
+	/*text-align:right;
+	padding-right : 1%;*/
+}
+
+#pied h4 {
+    color: #002266;
+	text-align:center;
+	/*text-align:right;
+	padding-right : 1%;*/
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+	.styleImageFooter {
+	
+	/*Pour centrer une image*/
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+    /*
+    display: block;
+    float: left;
+    
+    margin:10px 0 0 0 ;	
+	padding-left : 1%;*/
+	width : 400px;
+	height:105px;
+	opacity :0.8;
+	background : #FFFAFA;
+}
+
+	
+	#pied h3 { 
+	/*text-align:left;*/
+	/*text-align:right;*/
+	text-align:center;
+	padding-top: 3.4%; 
+	/*padding-right : 1%;*/
+	} /* Seulement Safari et Chrome */
+#pied h4 {
+    
+	/*text-align:left;*/
+	/*text-align:right;*/
+	text-align:center;
+	/*padding-right : 1%;*/
+}
+.ui-button.accueilcommandBStyle{
+	
+	display:block;
+	margin: 30px auto;
+	width: 300px;
+	height :100px;
+	background: #dad8f3;
+	color: #000000;
+	box-shadow: 0px 0px 8px #a89fe5;
+	opacity: 0.7;
+	border-radius : 15px;
+	border: 2px solid #a89fe5 ;
+	font-size: 22px;
+}
+
+}
+
+

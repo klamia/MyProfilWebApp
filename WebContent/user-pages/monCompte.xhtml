@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags">
+    <h:head>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/userTemplate.css" />
+    </h:head>
+    <h:body>
+    	
+       <ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+    	
+			<ui:define name="nav">
+               <div id="navigation">
+                 <p:toolbar  styleClass="toolbarStyleEntete">
+		         <p:toolbarGroup align="left">
+		                <p:commandButton  value="#{msg.button_accueil}" styleClass="commandBAccueil2Style" icon="ui-icon-home" action="homeUser?faces-redirect=true"/>
+		         </p:toolbarGroup>
+		          <p:toolbarGroup align="right">
+		          <h:outputFormat value="Welcome, {0}">
+                   <f:param value="#{loginBean.username}" />
+                  </h:outputFormat>
+				<p:commandButton  value="#{msg.button_deconnexion}" styleClass="commandBDeconnect2Style" icon="ui-icon-unlocked" action="#{logoutBean.logout}"/>
+	            </p:toolbarGroup> 
+               </p:toolbar> 
+              </div>
+           </ui:define>	
+       
+           <ui:define name="contentGauche"> 		  
+            <div id= "contenuGauche4">
+			<p:graphicImage value="/images/account-admin.jpg" styleClass ="styleImgContGauch" />
+	        </div> 		
+           </ui:define>
+       
+       <ui:define name="contentDroit"> 		  
+        
+            <p:panel id="panelProfil2" 
+             style="margin:0; padding:0; background-image:none;  height:100%; width:100%; border:none !important ">		
+       <h2 class="titreAdminCompte"><span class="fontawesome-lock"></span>Administration du Compte</h2>
+       <div id="compteAdmin">
+       <h:form id="adminAccountForm">
+       <h:panelGrid  id="compteAdministration" columns="2"  layout="grid" columnClasses="label, value" cellspacing="20" style=" margin:0 auto;">
+               
+                <h:outputText value=" Login:" />
+                <p:inputText value="#{compteBean.compte.login}"    disabled="true" /> 
+                
+                <h:outputText value=" Date Création:" />
+                <p:inputText value="#{compteBean.compte.dCreationCompte}"  disabled="true" >
+                 <f:convertDateTime pattern="dd/MM/yyyy" />
+              </p:inputText>  
+               <br/>
+               <br/>
+               <br/> 
+                <p:commandLink  value="Changer votre login et ou votre mot de passe" style="color:#a85fe5;"  
+                 update=":dialogAdminForm:displayeDialog" oncomplete="PF('comptEdit').show();" />
+                
+       
+       </h:panelGrid>
+      </h:form>
+      
+      <h:form id="dialogAdminForm">
+       <p:dialog header="Modification du Compte" widgetVar="comptEdit" resizable="false" id="editCompt">
+                <p:growl id="growl6" showDetail="true" sticky="false" life="2000"/>
+                <h:panelGrid id="displayeDialog" columns="2" cellpadding="4" style="margin:0 auto;">
+ 
+                    <f:facet name="header">
+                        
+                    </f:facet>
+ 
+                    <h:outputLabel for="login" title="login"
+						value="Login:"
+						style="color: #336699; font-weight:bold;" />
+					<p:inputText
+						value="#{compteBean.compteEnCours.login}"
+						id="login" />
+
+					<h:outputLabel for="pwd" title="Password" value="Mot de passe :"
+						style="color: #336699; font-weight:bold;" />
+					<p:password value="#{compteBean.compteEnCours.password}" id="pwd" redisplay="true" />
+				</h:panelGrid>
+                <p:separator/>
+                <br/>
+                <p:commandButton value="Enregistrer" update="growl6, :adminAccountForm:compteAdministration" action="#{compteBean.modifierCompteCourant}" oncomplete="PF('comptEdit').hide();"/>
+            </p:dialog>
+      </h:form>
+       
+       </div>
+       
+       </p:panel>	
+       
+       </ui:define>
+       
+       
+       </ui:composition>
+    	
+    </h:body>
+
+</html>

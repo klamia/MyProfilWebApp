@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags">
+    <h:head>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/template2Principale2.css" />
+    </h:head>
+    <h:body>
+    	
+   <ui:composition template="/WEB-INF/templates/templateLogin.xhtml">
+    	<ui:define name="nav">
+    	<c:if test="#{not empty param.login_error}">
+									<div class="alert-error">
+										Identifiant ou mot de passe invalide(s). Veuillez réessayer.
+										<!--   <p:outputLabel value="#{SPRING_SECURITY_LAST_EXCEPTION.message}" />-->
+									</div>
+									<h4 class="border-bot"></h4>
+								</c:if>
+								<c:if test="#{param.expired != null}">
+									<div class="alert-success">Vous avez été déconnecté
+										de force en raison de multiples sessions sur le même compte
+										(une seule session active par utilisateur est autorisée).</div>
+		</c:if>
+								
+    	</ui:define>
+    
+        <ui:define name="content">
+    	 
+    	 <div id= "contenuHomeLogin">
+    	
+    	 <div id= "contenuGaucheLogin">
+    			<p:graphicImage value="/images/login_image2.jpg" styleClass ="styleImageHome" />
+	 	 </div> 
+	   	 
+	   	 <div id= "contenuDroitLogin">       
+	     <div id="login">
+            <h:form id="formLogin" prependId="false">
+		    <h2><span class="fontawesome-lock"></span>Authentification</h2>
+			<p:fieldset >
+		 	    <div id="divMain">
+                  
+                   
+                   <div id="divAuthImage">
+		              <p:graphicImage value="/images/lock9.jpg" styleClass="authImageStyle" />
+			       </div>
+			        
+
+			       <div id="divInput">
+			         
+			         
+			         <p><p:inputText  id="j_username" value="#{loginBean.username}" label="Username" styleClass="inputfieldStyle"
+				      requiredMessage="Identifiant est un champ requis." icon="ui-icon-person"
+				      required="true" placeholder="Identifiant" /></p>
+                
+			         <p><p:password id="j_password" value="#{loginBean.password}" label="Password"  styleClass="inputfieldStyle"
+				     requiredMessage="Mot de passe est un champ requis."
+				     required="true"  placeholder="Mot de passe"  /></p>
+                   <h:outputLink value="login.jsf">Forgot password? </h:outputLink> 
+                   </div>
+                   
+					
+				   
+               </div>
+                
+               <div id="divSubmit">
+					<p:commandButton id="loginid" type="submit"
+					action="#{loginBean.login}" value="#{msg.button_login_connection}" ajax="false" icon="ui-icon-locked"  styleClass="submitStyle" />  
+                      <p:commandButton value="Annuler" update="formLogin"
+										type="reset" id="reset" styleClass="submitStyle2"
+										icon="ui-icon-refresh" ajax="false">
+										<p:resetInput target="formLogin" />
+									</p:commandButton>
+               </div>
+               
+		   </p:fieldset>
+        </h:form> 
+	</div> <!-- end login -->
+	 
+	 </div>
+	  </div>
+    		</ui:define>
+    		
+			
+    	</ui:composition>
+    	
+    </h:body>
+
+</html>

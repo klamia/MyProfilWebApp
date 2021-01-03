@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/template4Principale4.css" />
+    </h:head>
+    <h:body>
+    	
+    <ui:composition template="/WEB-INF/templates/template4Principale4.xhtml">
+    	
+   <ui:define name="loginame">
+   <p:outputLabel styleClass="labelStyleEntete">Admin</p:outputLabel> 
+   </ui:define>	
+   <ui:define name="contentGauche"> 		  
+     <div id= "contenuGauche4">
+		<p:fieldset legend="Administration" style="margin:-17px 0px 0px 0px; border:none " styleClass="myFieldset" >		     
+          <p:commandLink onclick="PF('comptePanel').show()" styleClass="accountButtonStyle">
+           <h:graphicImage value="/images/compte.png" />
+         </p:commandLink>
+		<br/>
+		<p:commandLink onclick="PF('gradePanel').show()" styleClass="accountButtonStyle">
+           <h:graphicImage value="/images/dept.png" />
+         </p:commandLink>
+		</p:fieldset>	
+	 </div> 		
+   </ui:define>	
+    
+<ui:define name="contentDroit">
+	   
+<p:panel id="panelCompte" widgetVar="comptePanel" visible="false"
+  style="margin:0; padding:0; background-image:none;  height:100%; width:100%; border:none ">
+      
+<h:form id="AjoutC">
+	      <h2 class="titreTable">Gestion Des Comptes Utilisateurs</h2>
+		<p:toolbar  styleClass="toolbarStyleContenu">
+        <p:toolbarGroup align="left">
+		  <p:commandButton value="Ajouter Compte"  id="ajoutC" resetValues="true" update=":FormCreationCompte:editC" action="#{compteBean.addCompte}"  icon="ui-icon-plus" styleClass="buttonClass" 
+		  oncomplete="PF('comptAjout').show();" />
+		 
+		 </p:toolbarGroup>  
+		<p:toolbarGroup align="right">
+          <p:commandButton value="Fermer" onclick="PF('comptePanel').close()" icon="ui-icon-plus" styleClass="buttonClass"/>
+        </p:toolbarGroup> 
+        </p:toolbar>
+</h:form>
+    
+<h:form id="ListeCompte">
+         
+            <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+            <p:dataTable var="compte" value="#{compteBean.listcompte}" id="tableCompte" styleClass="table2" widgetVar="CompteTable"  border="0" cellpadding="0" cellspacing="0"
+                         emptyMessage="Aucun compte a afficher" paginator="true" rows="4" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                          paginatorPosition="bottom" >
+ 
+                <f:facet name="header">
+                <p class="tableheader"> <span>Liste Des Comptes Utilisateurs </span></p>
+                </f:facet>
+           
+               
+              
+                <p:column style="width:118px !important">
+                    <p:commandButton id="editerC"  icon="ui-icon-arrowrefresh-1-w" action="#{compteBean.editCompte(compte)}" 
+                    update=":Actualise:displaye" oncomplete="PF('comptEdit').show();"  title="Editer"/>
+                    
+                    <p:spacer width="5" height="1" />
+                    <p:commandButton id="desactivC"   icon="ui-icon-locked" actionListener="#{compteBean.enabledCompte(compte)}" 
+                    action="#{compteBean.activer_desactiver_compte}" update=":ListeCompte:growl, :ListeCompte:tableCompte"  title="Dés/activer"/>
+                    
+                </p:column>
+                
+                <p:column headerText="Login"  filterBy="#{compte.login}" filterMatchMode="exact">
+                    <h:outputText value="#{compte.login}"/>
+                </p:column>
+                
+                <p:column headerText="Compte Admin" >
+                    <h:outputText value="#{compte.isAdmin}" />
+                </p:column>
+                  
+                <p:column headerText="Compte Activé">
+                    <h:outputText value="#{compte.enabled}" />
+                </p:column>
+                
+                 <p:column headerText="Role" id="rol" >
+                    <h:outputText value="#{compte.role.intitulerole}" />
+                </p:column>
+                
+                <p:column headerText="Has Profil"   >
+                    <h:outputText value="#{compte.hasProfil}" />
+                </p:column>
+                
+                  
+                <p:column headerText="Création Compte">
+                    <h:outputText value="#{compte.dCreationCompte}" />
+                </p:column>
+              
+                </p:dataTable>
+</h:form>
+      
+<h:form id="FormCreationCompte">
+        <p:dialog id="editC" header="Formulaire Création Compte" widgetVar="comptAjout" resizable="false">
+
+				<p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+				
+				<h:panelGrid id="display" columns="3" cellpadding="5">
+					<h:outputLabel for="login" title="Login" value="Login:"
+						style="color: #336699; font-weight:bold;" />
+					<p:inputText value="#{compteBean.compte.login}" id="login" label="login" required="true" requiredMessage="#{mesg['ajoutCompte.Login']}"/>
+                    <p:message id="loginMessage" for="login" />
+					
+					<h:outputLabel for="pwd1" value="Mot de passe" style="color: #336699; font-weight:bold;"/>
+					<p:password id="pwd1" value="#{compteBean.compte.password}" feedback="true" promptLabel="Vous devez saisir un mot de passe"
+					weakLabel="Faible" goodLabel="Bon" strongLabel="Fort" match="pwd2" required="true" validatorMessage="les mots de passes entrés ne se correspondent pas"/>
+					<p:spacer/>
+					
+					<h:outputLabel for="pwd2" value="Resaisir Mot de passe" style="color: #336699; font-weight:bold;"/>
+					<p:password id="pwd2" value="#{compteBean.compte.password}" feedback="true" promptLabel="Vous devez saisir un mot de passe"
+					weakLabel="Faible" goodLabel="Bon" strongLabel="Fort" required="true" />
+                     <p:spacer/>
+                     
+                    <h:outputLabel for="email" value="Email Professionnel:" title="Email Cerist" style="color: #336699; font-weight:bold; width:80px !important;" />
+                    <p:inputText id="email" value="#{compteBean.compte.emailProf}" required="true" requiredMessage="#{mesg['ajoutProfil.email']}"
+                    validatorMessage="L'adresse email entrée n'est pas valide">
+                    <f:ajax event="blur" render="emailMessage" />
+                    <f:validateRegex pattern="^[a-z]{2,}[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"/>
+                    </p:inputText>
+                     <p:message id="emailMessage" for="email" />
+					
+					<h:outputText style="color: #336699; font-weight:bold;" value="Administrateur:" /> 
+                    <p:selectOneMenu id="adminid"    
+                    required="true" requiredMessage="#{mesg['ajoutCompte.Admin']}"
+                    var="sexe" value="#{compteBean.compte.isAdmin}">
+                       <f:selectItem itemLabel="Select" itemValue="#{null}"/>
+                       <f:selectItem itemLabel="true" itemValue="true" />
+                       <f:selectItem itemLabel="false" itemValue="false" />
+                    </p:selectOneMenu>
+                    <p:message id="AdminMessage" for="adminid" />
+                    
+					<h:outputText style="color: #336699; font-weight:bold;" value="Role:" /> 
+                    <p:selectOneMenu id="rolid" value="#{compteBean.compte.role}" converter="#{roleConverter}"
+						panelStyle="width:150px" effect="fade" style="width:160px"
+						filter="true" filterMatchMode="startsWith"  required="true" requiredMessage="#{mesg['ajoutCompte.Role']}" >
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{autoCompleteBean.selectItemRoles}" />
+					</p:selectOneMenu>  
+	               <p:message id="RoleMessage" for="rolid" />
+	               
+	               </h:panelGrid>
+                 <br/>
+                   <br/>
+                   
+					<f:facet name="footer">
+						<p:commandButton value="Enregistrer" update="growl, :ListeCompte:tableCompte" action="#{compteBean.ajoutCompte}" oncomplete="PF('comptAjout').hide();"/>
+						<p:spacer width="50" height="10" />
+						<p:commandButton value="Annuler" update=":FormCreationCompte:editC" process="@none" actionListener="#{compteBean.reset}" />
+					</f:facet>
+
+			</p:dialog>
+</h:form>	
+
+<h:form id="Actualise">
+            <p:dialog header="Modification du Compte" widgetVar="comptEdit" resizable="false" id="editCompt">
+                <p:growl id="growl2" showDetail="true" sticky="false" life="1000"/>
+                <h:panelGrid id="displaye" columns="2" cellpadding="4" style="margin:0 auto;">
+ 
+                    <f:facet name="header">
+                        
+                    </f:facet>
+ 
+                    <h:outputLabel for="login" title="login"
+						value="Login:"
+						style="color: #336699; font-weight:bold;" />
+					<p:inputText
+						value="#{compteBean.editedCompte.login}"
+						id="login" />
+
+					<h:outputLabel for="pwd" title="Password" value="Mot de passe :"
+						style="color: #336699; font-weight:bold;" />
+					<p:password
+						value="#{compteBean.editedCompte.password}"
+						id="pwd"  />
+						
+					<h:outputText style="color: #336699; font-weight:bold;" value="Role:" /> 
+                    <p:selectOneMenu id="rol2" value="#{compteBean.editedCompte.role}" converter="#{roleConverter}"
+						panelStyle="width:150px" effect="fade" style="width:160px"
+						filter="true" filterMatchMode="startsWith">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{autoCompleteBean.selectItemRoles}" />
+					</p:selectOneMenu> 	
+					
+                </h:panelGrid>
+                <p:separator/>
+                <br/>
+                <p:commandButton value="Enregistrer" update="growl2, :ListeCompte:tableCompte" action="#{compteBean.modifierCompte}" oncomplete="PF('comptEdit').hide();"/>
+            </p:dialog>
+         </h:form>
+    
+</p:panel>
+
+
+<p:panel id="panelGrade" widgetVar="gradePanel" visible="false"
+  style="margin:0; padding:0; background-image:none; height:100%; width:100%; border:none ">
+ <h:form>
+	<h2 class="titreTable">Gestion Des Divisions de Recherche</h2>
+		<p:toolbar  styleClass="toolbarStyleContenu">
+        <p:toolbarGroup align="left">
+		    <p:commandButton value="Ajouter Division" id="ajoutG" action="#{divisionBean.addDivision}" resetValues="true" update=":FormCreationGrade:editG"  icon="ui-icon-plus" styleClass="buttonClass"
+		    oncomplete="PF('gradAjout').show();" />
+		 </p:toolbarGroup>  
+		<p:toolbarGroup align="right">
+           <p:commandButton value="Fermer" onclick="PF('gradePanel').close()" icon="ui-icon-plus" styleClass="buttonClass"/>
+        </p:toolbarGroup> 
+        </p:toolbar>
+     </h:form>
+  <h:form id="ListeGrade">
+         
+            <p:growl id="growl" showDetail="true" sticky="false"  />
+            <p:dataTable var="division" value="#{divisionBean.listdivision}" id="tableGrade" styleClass="table2" widgetVar="GardeTable"  border="0" cellpadding="0" cellspacing="0"
+                         emptyMessage="Aucun grade à afficher" paginator="true" rows="2" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         paginatorPosition="bottom"  >
+            
+                
+                <f:facet name="header">
+                <p class="tableheader"> <span>Liste Des Divisions et Départements de Recherche </span></p>
+                </f:facet>
+            
+                <p:column style="width:55px">
+                    <p:commandButton id="editerG"  icon="ui-icon-arrowrefresh-1-w" action="#{divisionBean.editDivision(division)}" 
+                    update=":ActualiseG:displayeG" oncomplete="PF('gradEdit').show();"  title="Editer"/>
+                  
+                </p:column>
+                
+               <p:column headerText="Code Division"  style="width:150px" filterBy="#{division.codeDivision}" filterMatchMode="exact">
+                    <h:outputText value="#{division.codeDivision}"/>
+                </p:column>
+                
+                <p:column headerText="Intitulé Division"   style="width:320px" >
+                    <h:outputText value="#{division.intituleDivision}" />
+                </p:column>
+               
+               <p:column headerText="URL Division"  style="width:320px" >
+                    <h:outputText value="#{division.urlDivision}" />
+                </p:column> 
+
+                <p:column headerText="Tel Division"  style="width:150px" >
+                    <h:outputText value="#{division.telDivision}" />
+                </p:column> 
+                
+                <p:column headerText="Fax Division"  style="width:150px" >
+                    <h:outputText value="#{division.faxDivision}" />
+                </p:column> 
+                
+                </p:dataTable>
+          </h:form>
+ 
+	
+ <h:form id="FormCreationGrade">
+        <p:dialog id="editG" header="Formulaire Création Division" widgetVar="gradAjout" resizable="false">
+
+				<p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+				
+				<h:panelGrid id="displayG" columns="2" cellpadding="5">
+					
+					<h:outputLabel id="cod" for="codiv" title="Code" value="Code Division:* "
+						style="color: #336699; font-weight:bold;" />
+					<p:inputText value="#{divisionBean.division.codeDivision}" id="codiv" label="cod" required="true" requiredMessage="Vous devez saisir le code de la division"/>
+					
+					<h:outputLabel id="design" for="intitule" title="Intitulé" value="Intitulé Division:* "
+						style="color: #336699; font-weight:bold;" />
+					<p:inputText value="#{divisionBean.division.intituleDivision}" id="intitule" label="design" required="true" requiredMessage="Vous devez saisir une Désignation"/>
+
+                     <h:outputLabel id="lk" for="link" title="Link" value="URL Division: " 
+						style="color: #336699; font-weight:bold;" />
+					 <p:inputText value="#{divisionBean.division.urlDivision}" id="link" label="lk" required="true" requiredMessage="Vous devez saisir l'url de la division" />
+	            
+	                 <h:outputLabel id="tl" for="tel" title="tel" value="Telephone Division: " 
+						style="color: #336699; font-weight:bold;" />
+					 <p:inputMask value="#{divisionBean.division.telDivision}" id="tel" mask="+213 (0)23-99-99-99" label="tl"  required="true" requiredMessage="Vous devez saisir le numéro de téléphone de la division" />
+	             
+	            
+	                 <h:outputLabel id="fx" for="fax" title="fax" value="fax Division: " 
+						style="color: #336699; font-weight:bold;" />
+					 <p:inputMask value="#{divisionBean.division.faxDivision}" id="fax"  mask="+213 (0)23-99-99-99" label="fx"  required="true" requiredMessage="Vous devez saisir le numéro de fax de la division" />
+	             </h:panelGrid>
+                 <br/>
+                   <br/>
+                   
+					<f:facet name="footer">
+						<p:commandButton value="Enregistrer" update="growl, :ListeGrade:tableGrade" action="#{divisionBean.ajoutDivision}" oncomplete="PF('gradAjout').hide();"/>
+						<p:spacer width="50" height="10" />
+						
+						<p:commandButton value="Annuler" update=":FormCreationGrade:editG" process="@none" actionListener="#{divisionBean.reset}" />
+					</f:facet>
+
+			</p:dialog>
+</h:form>	
+	
+	
+  <h:form id="ActualiseG">
+            <p:dialog header="Modification de division" widgetVar="gradEdit" resizable="false" id="editGrad">
+                <p:growl id="growl2" showDetail="true" sticky="false" life="3000"/>
+                <h:panelGrid id="displayeG" columns="2" cellpadding="4" style="margin:0 auto;">
+ 
+                    <f:facet name="header">
+                        
+                    </f:facet>
+ 
+                   <h:outputLabel for="cde" title="Code"
+						value="Code Division:"
+						style="color: #336699; font-weight:bold;" />
+					<p:inputText
+						value="#{divisionBean.editedDivision.codeDivision}"
+						id="cde" />
+                   
+                    <h:outputLabel for="des" title="Intitulé"
+						value="Intitulé Division:"
+						style="color: #336699; font-weight:bold;" />
+					<p:inputText
+						value="#{divisionBean.editedDivision.intituleDivision}"
+						id="des" />
+					
+					<h:outputLabel for="urlDiv" title="link"
+						value="URL Division:"
+						style="color: #336699; font-weight:bold;" />
+					<p:inputText
+						value="#{divisionBean.editedDivision.urlDivision}"
+						id="urlDiv" />
+                    
+                    <h:outputLabel  for="tel" title="tel" value="Telephone Division: " 
+						style="color: #336699; font-weight:bold;" />
+					 <p:inputMask value="#{divisionBean.editedDivision.telDivision}" id="tel" mask="+213 (0)99-99-99-99"  />
+	             
+	            
+	                 <h:outputLabel  for="fax" title="fax" value="fax Division: " 
+						style="color: #336699; font-weight:bold;" />
+					 <p:inputMask value="#{divisionBean.editedDivision.faxDivision}" id="fax"  mask="+213 (0)99-99-99-99" />
+					
+					
+					
+                </h:panelGrid>
+                <p:separator/>
+                <br/>
+                <p:commandButton value="Enregistrer" update="growl2, :ListeGrade:tableGrade" action="#{divisionBean.modifierDivision}" oncomplete="PF('gradEdit').hide();"/>
+            </p:dialog>
+         </h:form>	
+
+</p:panel>	
+     
+		</ui:define>	
+   
+    </ui:composition>
+    	
+    </h:body>
+
+</html>

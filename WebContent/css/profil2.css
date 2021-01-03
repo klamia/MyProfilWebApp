@@ -1,0 +1,271 @@
+/* G�n�ral */
+
+
+body {
+	color: black;
+	
+
+	background: #4B0082;
+}
+a {
+	/*color: #FF6533;*/
+	color:#4B0082;
+	font-weight: bold;
+}
+
+a:hover, a:focus {
+	color: #a89fe5;
+	
+}
+
+
+/* Page */
+#global {
+	background: rgba(255,255,255,1);
+background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(55%, rgba(239,236,248,1)), color-stop(65%, rgba(228,225,245,1)), color-stop(100%, rgba(218,216,243,1)));
+background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dad8f3', GradientType=1 );
+}
+
+/*Entete*/
+#entete{
+	height: 245px;
+}
+.nomPrenomLabel{
+	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif !important;
+	font-weight: bold !important;
+	font-size: 2.8em !important;
+	font-style: italic;
+	margin-left: 80px;
+	
+}
+.gradeLabel{
+	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif !important;
+	font-weight: normal !important;
+	font-size: 1.8em !important;
+	margin-left: 90px;
+}
+.restedesLabel{
+	font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif;
+	font-size: 1em; 
+	line-height: 1.65; 
+	margin-left: 30px;
+}
+.styleImageEntete {
+ 
+  float:left;
+  max-width:200px; max-height:205px; min-width:200px; min-height:205px;
+}
+
+/* Navigation */
+#navigation {
+	/*background: #181A12;*/
+	/*background: white;*/
+	background: #a89fe5;
+	/*background:#dad8f3;*/
+	border-radius: 10px ;
+	width:790px;
+	margin:0 3px;
+	border: 2px solid #4B0082;
+}
+#navigation a  {
+	color: #4B0082;
+	
+}
+
+
+
+#navigation a span:hover, #navigation a span:focus {
+	background: #dad8f3;
+	color:#a89fe5;
+	
+}
+
+/* Contenu principal */
+#contenu {
+	
+	background: #dad8f3;
+}
+
+
+
+/* Pied de page */
+#pied-page {
+	color: #a89fe5;
+	height: 90px;
+	background: #FFFAFA;;
+}
+
+/* --- POSITIONNEMENT --- */
+
+/* Page */
+html, body {
+	height: 100%; /* Voir -> Note 1 ci-dessous */
+}
+body {
+	padding: 0;
+}
+#global {
+	min-height: 100%; /* -> 1 */
+	width:800px;
+	overflow: hidden; /* -> 2 */
+	margin-left: auto;
+	margin-right: auto; /* -> 3 */
+}
+
+/* En-t�te */
+#entete {
+	padding: 20px 15px 15px 15px;
+}
+
+.styleImageEntete {
+  margin: 05px;
+}
+
+
+/* Menu de navigation */
+#navigation {
+	/*padding: 12px 15px;*/
+	padding: 12px 0px;
+	
+}
+#navigation ul {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+#navigation li {
+	display: inline;
+}
+#navigation a {
+	padding: 0px;
+	line-height: 1.5;
+	font-size: .9em;
+	text-decoration: none;
+}
+.bouton1{
+	font-family: 'conduititc';
+	font-size: 16px;
+	padding: 3px 10px 3px 10px;
+	background: #f6f6f6;
+	border-radius: 4px;
+	border: 1px solid #a89fe5;
+	transition: background 0.7s;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+}
+
+/* Contenu */
+#contenu {
+	padding: 10px 20px;
+}
+#contenu > :first-child {
+	margin-top: 10px;
+}
+#contenu p, #contenu li {
+	line-height: 1.5;
+}
+#contenu h2 {
+text-align:center;
+color:#4B0082;
+font-weight: bold;
+}
+
+
+#contenu img {
+	
+float: left;
+	margin: -20px 0 0 0;
+}
+#contenu h4{
+	margin:0;
+}
+#domaineRecherche{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	border-radius: 20px ;
+	
+	
+}
+#projetRecherche{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	border-radius: 20px;
+}
+#activitéEns{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	border-radius: 20px;
+}
+#productionScient{
+	margin-left: auto;
+	margin-right: auto;
+	width:600px;
+	overflow: auto;
+	background: white;
+	border-radius: 20px;
+}
+
+
+/* Pied de page */
+#pied-page {
+	padding: 15px 20px;
+	font-size: .85em;
+	text-align:center;
+	
+}
+.styleImageFooter {
+
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+   
+	/*padding-left : 1%;*/
+	background : #FFFAFA;
+}
+#pied-page p {
+	margin: .5em 10px;
+	
+}
+#pied-page h2{
+	color:#a89fe5;
+	
+	font-weight: bold;
+}
+
+.ui-inputtextarea.texteAreaProfil{
+	
+	
+	margin: 5px;
+	padding: 5px;
+	border : none;
+	box-shadow: none;
+}
+#pageProfiLink{
+	height: 30px;
+	width:100%;
+	background:#a89fe5;
+	padding-left :690px;
+	padding-top: 10px;
+	
+}
+
+#pageAnnuairelink{
+	height: 30px;
+	width:100%;
+	background:#a89fe5;
+	padding-left :630px;
+	padding-top: 10px;
+}

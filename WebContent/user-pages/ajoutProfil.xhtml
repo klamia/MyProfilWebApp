@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/userTemplate.css" />
+    
+    </h:head>
+    <h:body>
+    	
+<ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+
+<ui:define name="nav">
+  <h:form id="navigationForm">
+  <div id="navigation">
+       <p:toolbar  styleClass="toolbarStyleEntete">
+		<p:toolbarGroup align="left">
+		 <p:commandButton  value="#{msg.button_accueil}" styleClass="commandBAccueil2Style" icon="ui-icon-home" action="homeUser?faces-redirect=true"/>
+		 </p:toolbarGroup>
+		<p:toolbarGroup align="right">
+		<h:outputFormat value="Welcome, {0}">
+           <f:param value="#{loginBean.username}" />
+        </h:outputFormat>
+		
+		 
+		<p:commandButton  value="#{msg.button_deconnexion}" styleClass="commandBDeconnect2Style" icon="ui-icon-unlocked" action="#{logoutBean.logout}"/>
+	</p:toolbarGroup> 
+        </p:toolbar> 
+       </div>
+</h:form>
+</ui:define>	
+   
+<ui:define name="contentGauche"> 		  
+     <div id= "contenuGauche4">
+			<p:graphicImage value="/images/creation-profil.jpg" styleClass ="styleImgContGauch" />
+	 </div> 		
+</ui:define>	
+    
+ 
+<ui:define name="contentDroit">
+	
+ <p:panel id="panelProfil" 
+  style="margin:0; padding:0; background-image:none; border:none !important; height:100%; width:100% ">
+	<h:form id="principForm" enctype="multipart/form-data">
+	<p:growl id="growl" life="1500" showDetail="true"/>
+ 
+    <p:wizard flowListener="#{profilBean.onFlowProcess}" style="border:none !important ">
+        <p:tab id="personal" title="Personnel">
+            <p:scrollPanel  style="width:900px;height:290px">
+            <p:panel  header="Informations personnelles" >
+                
+                 <!--  <h:panelGrid columns="2" columnClasses="grid, grid" >-->
+                <h:form id="uploadForm" enctype="multipart/form-data">
+                <h:panelGrid  columns="3"  layout="grid" columnClasses="label, value" cellspacing="10">
+                    <!-- h:outputText value="Nom: *" />  -->
+                    
+                    <h:outputText value=" Nom: * " style="color: #336699; font-weight:bold;" />
+                    <p:inputText id="nom" value="#{profilBean.profil.nom}" required="true" requiredMessage="#{mesg['ajoutProfil.nom']}" 
+                    placeholder="votre nom en majuscule" 
+                    validatorMessage="Le nom entré ne correspond pas au format suivant: XXX XXX ou XXX-XXX ou XXX'XXX " > 
+                     <f:ajax event="blur" render="nomMessage" />
+                     <f:validateRegex pattern="^[A-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝ]+[\ \-\']?[A-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝ]+$" />
+                      </p:inputText>
+                     <p:message  id="nomMessage" for="nom" />
+                     
+                     <h:outputText value=" Prénom: * " style="color: #336699; font-weight:bold;" />
+                     <p:inputText id="prenom" value="#{profilBean.profil.prenom}" required="true" requiredMessage="#{mesg['ajoutProfil.prenom']}"
+                     placeholder="1ere lettre en majuscule"
+                     validatorMessage="Le prenom entré ne correspond pas au format suivant: Xxx xxx ou Xxx-xxx ou Xxx'xxx ">
+                     <f:ajax event="blur" render="prenomMessage" />
+                     <f:validateRegex pattern="^[A-Z]{1}[a-zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[\ \-\']?[a-zàáâãäåçèéêëìíîïðòóôõöùúûüýÿA-Z]+$" /> 
+                     </p:inputText>
+                     <p:message id="prenomMessage" for="prenom" />
+                     
+                    <h:outputText value="Sexe: * " style="color: #336699; font-weight:bold;" />
+                    <p:selectOneMenu id="sexe1"   style="width:128px" 
+                    required="true" requiredMessage="#{mesg['ajoutProfil.sexe']}"
+                    var="sexe" value="#{profilBean.profil.sexe}">
+                       <f:selectItem itemLabel="Select" itemValue="#{null}"/>
+                       <f:selectItem itemLabel="Masculin" itemValue="Masculin" />
+                       <f:selectItem itemLabel="Féminin" itemValue="Féminin" />
+                       
+                    </p:selectOneMenu>
+                    <p:message id="sexeMessage" for="sexe1"  />
+                   
+                    
+                    
+                   <h:outputText value="Grade Actuel: * " style="color: #336699; font-weight:bold;" />
+                   <p:selectOneMenu id="gradid"   style="width:128px" 
+                    required="true" requiredMessage="#{mesg['ajoutProfil.grade']}"
+                    var="grd" value="#{profilBean.profil.grade}">
+                       <f:selectItem itemLabel="Select One" itemValue="#{null}"/>
+                       <f:selectItem itemLabel="Professeur" itemValue="Professeur" />
+                       <f:selectItem itemLabel="Directeur de Recherche" itemValue="Directeur de Recherche" />
+                       <f:selectItem itemLabel="Maitre de Recherche Classe A" itemValue="Maitre de Recherche Classe A" />
+                       <f:selectItem itemLabel="Maitre de Recherche Classe B" itemValue="Maitre de Recherche Classe B" />
+                       <f:selectItem itemLabel="Chargé de Recherche" itemValue="Chargé de Recherche" />
+                       <f:selectItem itemLabel="Attaché de Recherche" itemValue="Attaché de Recherche" />
+                       <f:selectItem itemLabel="Chargé d'études" itemValue="Chargé d'études" />
+                       <f:selectItem itemLabel="Ingénieur de Recherche" itemValue="Ingénieur de Recherche" />
+                       <f:selectItem itemLabel="Ingénieur Soutien à la Recherche" itemValue="Ingénieur Soutien à la Recherche" />
+                    </p:selectOneMenu> 
+                    <p:message id="gradeMessage" for="gradid"  /> 
+                    
+           
+                    <h:outputText  value="Photo d'identité: " style="color: #336699; font-weight:bold;" />
+                    <h:form id="imageForm" enctype="multipart/form-data">
+                    <p:fileUpload  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                     fileUploadListener="#{profilBean.handleFileUpload}"  /> 
+                    <p:spacer/>
+                   </h:form>
+                    <p:spacer/>
+                 
+                
+                </h:panelGrid>
+              </h:form>
+                
+            </p:panel>
+            </p:scrollPanel>
+        </p:tab>
+ 
+        <p:tab id="professional" title="Professionnel">
+           <p:scrollPanel  style="width:900px;height:290px">
+            <p:panel  header="Informations professionnelles" >
+                
+                <h:panelGrid columns="3" columnClasses="label, value" layout="grid" >
+          
+					<h:outputText value="Domaines de Recherche: * " style="color: #336699; font-weight:bold;"/>
+                    <p:inputTextarea id="domaineR" rows="6" cols="45" value="#{profilBean.profil.domaineRecherche}" autoResize="false" >
+                    <f:ajax event="blur" render="domaineMessage" />
+                   </p:inputTextarea>
+                    <p:message id="domaineMessage" for="domaineR" />
+                      
+                    <h:outputText value="Projets de Recherche: * " style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea id="projetR" rows="6" cols="45" value="#{profilBean.profil.projetRecherche}" autoResize="false" >
+                    <f:ajax event="blur" render="projetMessage" />
+                    </p:inputTextarea>
+                    <p:message id="projetMessage" for="projetR" />
+                    
+                    <h:outputText value="Activités d'enseignement:" style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea id="activiteEns" rows="6" cols="45" value="#{profilBean.profil.activiteEns}" autoResize="false"/>
+                    <p:message for="activiteEns" />
+                    
+                    
+                    <h:outputText value="Production Scientifique(url DL): " style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea id="dl" rows="6" cols="45" value="#{profilBean.profil.urlDl}" placeholder="votre url du dépot DL" autoResize="false" />
+                    <p:message id="dlMessage" for="dl" />
+                    
+                </h:panelGrid>
+            </p:panel>
+        </p:scrollPanel>
+        </p:tab>
+ 
+        <p:tab id="contact" title="Contact">
+           <p:scrollPanel  style="width:900px;height:290px">
+            <p:panel header="Contact">
+                
+                <h:panelGrid columns="3" columnClasses="label, value" cellspacing="10">
+                    
+                    <h:outputText style="color: #336699; font-weight:bold;"
+						value="Division de Recherche : * " />
+					<p:selectOneMenu id="divisionid" value="#{profilBean.profil.division}" converter="#{divisionConverter}"
+					 panelStyle="width:150px" effect="fade" required="true" requiredMessage="Vous devez choisir votre Division ou Département de rattachement"
+					 style="width:350px" filter="true"
+						filterMatchMode="startsWith">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						
+						<f:selectItems value="#{autoCompleteBean.selectItemDivisions}" />
+						 
+					</p:selectOneMenu>
+                    <p:message id="divisionMessage" for="divisionid"  /> 
+                                  
+                     <h:outputText value="Email Professionnel: * " style="color: #336699; font-weight:bold;" />
+                    <p:inputText id="email" value="#{profilBean.profil.email}" required="true" requiredMessage="#{mesg['ajoutProfil.email']}"
+                    validatorMessage="L'adresse email entrée n'est pas valide">
+                    <f:ajax event="blur" render="emailMessage" />
+                    <f:validateRegex pattern="^[a-z]{2,}[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"/>
+                    </p:inputText>
+                     <p:message id="emailMessage" for="email" />
+                     
+                    <h:outputText value="Numéro de Poste: * " style="color: #336699; font-weight:bold;" />
+                    <p:inputText id="poste" value="#{profilBean.profil.poste}" required="true" requiredMessage="Veuillez introduire votre numéro de poste téléphonique"/>                          
+                    <p:message id="posteMessage" for="poste" />
+                    
+                    
+                    <h:outputText value="Mobile: " style="color: #336699; font-weight:bold;" />
+                    <p:inputMask id="mobile" value="#{profilBean.profil.mobile}" mask="+213 (0)999-99-99-99"/>
+                    <p:message for="mobile" />
+                    
+                    <h:outputText value="Numéro de Bureau: * " style="color: #336699; font-weight:bold;" />
+                    <p:inputText id="bureau" value="#{profilBean.profil.bureau}" required="true" requiredMessage="Veuillez introduire votre numéro de bureau"/>                          
+                    <p:message id="bureauMessage" for="bureau" />
+                    
+                    
+                    <h:outputText value="Adresse Professionnelle: " style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea id="adresse" rows="6" cols="45" value="#{profilBean.profil.adresse}" autoResize="false" />
+                    <p:message for="adresse" />
+                </h:panelGrid>
+            </p:panel>
+       </p:scrollPanel>
+        </p:tab>
+
+        <p:tab id="confirm" title="Confirmation">
+            <p:scrollPanel  style="width:900px;height:290px"> 
+            <p:panel id="confirmation" header="Confirmation" style="margin-bottom:3px">
+              
+                <p:panelGrid columns="2"   columnClasses="label, value" layout="grid" styleClass="panelgridediterprofil">
+                    
+                    
+                    <h:outputText value="Nom:  " style="color: #336699; font-weight:bold;" />
+                    <h:outputText value="#{profilBean.profil.nom}" styleClass="outputLabel"/> 
+ 
+                    <h:outputText value="Prénom:  " style="color: #336699; font-weight:bold;" />
+                    <h:outputText value="#{profilBean.profil.prenom}" styleClass="outputLabel"/>
+ 
+                    <h:outputText value="Sexe: " style="color: #336699; font-weight:bold;"  />
+                    <h:outputText value="#{profilBean.profil.sexe}" styleClass="outputLabel"/>
+ 
+                                    
+                    <h:outputText value="Grade Actuel: "  style="color: #336699; font-weight:bold;" />
+                    <h:outputText value="#{profilBean.profil.grade}" styleClass="outputLabel"/>
+					
+					<h:outputText value="Domaines de Recherche: "  style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea rows="10" cols="55" value="#{profilBean.profil.domaineRecherche}" />
+ 
+                    <h:outputText value="Projets de Recherche: " style="color: #336699; font-weight:bold;"  />
+                    <p:inputTextarea rows="10" cols="55" value="#{profilBean.profil.projetRecherche}" />
+ 
+                    <h:outputText value="Activités d'enseignement: " style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea rows="10" cols="55" value="#{profilBean.profil.activiteEns}" />
+                
+                    <h:outputText value="Production Scientifique(url DL): " style="color: #336699; font-weight:bold;" />
+                    <h:outputText value="#{profilBean.profil.urlDl}" styleClass="outputLabel"/>
+                    
+                    <h:outputText value="Division de Recherche: " style="color: #336699; font-weight:bold;" />
+                    <h:outputText value="#{profilBean.profil.division.intituleDivision}" styleClass="outputLabel" />
+                    
+                    <h:outputText value="Email Professionnel: " style="color: #336699; font-weight:bold;" />
+                    <h:outputText value="#{profilBean.profil.email}" styleClass="outputLabel"/>
+ 
+                    <h:outputText value="Num Poste: " style="color: #336699; font-weight:bold;" />
+                   <h:outputText value="#{profilBean.profil.poste}" styleClass="outputLabel"/>
+                   
+                   <h:outputText value="Num Bureau: " style="color: #336699; font-weight:bold;" />
+                   <h:outputText value="#{profilBean.profil.bureau}" styleClass="outputLabel"/>
+                   
+                   <h:outputText value="Mobile: " style="color: #336699; font-weight:bold;" />
+                   <h:outputText value="#{profilBean.profil.mobile}" styleClass="outputLabel"/>
+ 
+                    <h:outputText value="Adresse Professionnelle: " style="color: #336699; font-weight:bold;" />
+                    <h:outputText value="#{profilBean.profil.adresse}" styleClass="outputLabel"/>
+                
+                  <h:outputText value="photo :" style="color: #336699; font-weight:bold;"  />
+                  <p:graphicImage  value ="#{profilBean.myPhoto}" style="height:120px;width:120px"
+                  cache="false" rendered="true" />
+                
+         
+                </p:panelGrid>
+               
+ 
+                <p:commandButton value="Enregistrer Profil" styleClass="saveProfilstyle"  
+                
+                action="#{profilBean.ajoutProfil}" oncomplete="downloadWV.jq.show()" update="growl" process="@this" ajax="false"/>
+           
+            </p:panel>
+         </p:scrollPanel>
+        </p:tab>
+     
+    </p:wizard>
+	
+	
+	
+	
+	</h:form>
+ 
+</p:panel>	
+    
+    
+    
+   
+     
+</ui:define>
+
+
+
+
+
+
+
+
+
+</ui:composition>
+    	
+    </h:body>
+
+</html>

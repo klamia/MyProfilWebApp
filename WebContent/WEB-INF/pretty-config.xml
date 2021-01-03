@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.2.1" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.2.1
+                                   		http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.2.1.xsd">
+    <url-mapping id="login">
+        <pattern value="/login"/> <!--url pattern-->
+        <view-id value="/login.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>                               		
+    
+    <url-mapping id="homeAdmin">
+        <pattern value="/administration"/> <!--url pattern-->
+        <view-id value="/admin-pages/homeAdmin.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>
+   <url-mapping id="homeUser">
+        <pattern value="/accueil"/> <!--url pattern-->
+        <view-id value="/user-pages/homeUser.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>
+    <url-mapping id="ajoutProfil">
+        <pattern value="/creer-profil"/> <!--url pattern-->
+        <view-id value="/user-pages/ajoutProfil.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>
+    <url-mapping id="editerProfil">
+        <pattern value="/editer-profil"/> <!--url pattern-->
+        <view-id value="/user-pages/editerProfil.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>
+    <url-mapping id="profil-cree">
+        <pattern value="/profil-cree"/> <!--url pattern-->
+        <view-id value="/user-pages/profilCreated.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>
+    <url-mapping id="mon-profil">
+        <pattern value="/mon-profil"/> <!--url pattern-->
+        <view-id value="/user-pages/profil-professionnel.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>
+   
+    <url-mapping id="profil-public">
+        <pattern value="/profil-public"/> <!--url pattern-->
+        <view-id value="/profil-public.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>
+    <url-mapping id="annuaire">
+        <pattern value="/annuaire"/> <!--url pattern-->
+        <view-id value="/annuaire.jsf"/> <!--name of the page you want to change the url-->
+    </url-mapping>
+
+</pretty-config>

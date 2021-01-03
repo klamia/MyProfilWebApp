@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+ <h:head>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/template2Principale2.css" />
+</h:head>
+<h:body >
+ <div id="global">   
+    
+    
+    <ui:insert name="header" >
+        <div id="entete">
+        <h:form> 
+		<!--   <p:graphicImage value="/images/ceristt.jpg" styleClass ="styleImageFooter" /> -->
+		 <p:graphicImage value="/images/cerist1.png" styleClass ="styleImageFooter" />
+		<!-- <p:graphicImage value="/images/ceristt.jpg" styleClass ="styleImageFooter2" />-->
+	</h:form>
+    </div>
+    </ui:insert>
+    
+    
+    
+       <ui:insert name="nav" >
+       <div id="navigation">
+       <p:toolbar  styleClass="toolbarStyleEntete">
+		<p:toolbarGroup align="left">
+		   <p:commandButton  value="#{msg.button_administration}" styleClass="AdcommandBStyle" icon="ui-icon-person"/>
+		   </p:toolbarGroup>  
+		<p:toolbarGroup align="right">
+		<p:outputLabel styleClass="labelStyleEntete">#{msg.label_welcome}</p:outputLabel>
+		<p:outputLabel styleClass="labelStyleEntete">Login</p:outputLabel>
+		<p:commandButton  value="#{msg.button_deconnexion}" styleClass="DeconncommandBStyle" icon="ui-icon-unlocked" action="/login?faces-redirect=true"/>
+		<!--  
+		<p:commandButton  value="Arabe" styleClass="LanguecommandBStyle" image="ui-icon-document"/>
+		 -->
+		</p:toolbarGroup> 
+        </p:toolbar> 
+       </div>
+	   </ui:insert>
+    
+    
+   
+    <ui:insert name="content" >
+     <div id="contenu">   
+        <p:graphicImage value="/images/RH4.jpg" styleClass ="styleImageContenu" />
+    </div>
+    </ui:insert>
+    
+   
+    
+    <ui:insert name="footer" > 
+      <div id="pied">
+       <h3>#{msg.titre_pied1}</h3>
+       <h4>#{msg.titre_pied2}</h4>	
+      </div>
+     </ui:insert>
+    
+ 
+ </div>   
+</h:body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition>
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/templatePrincipale.css" /> 
+</h:head>
+<h:body>
+
+	<div id="navigation">
+	  <h:form> 
+		<p:toolbar  styleClass="toolbarStyle">
+		<p:toolbarGroup align="left">
+		   <p:commandButton  value="Administration" styleClass="commandBStyle" image="ui-icon-document"/>
+		   </p:toolbarGroup>  
+		<p:toolbarGroup align="right">
+		<p:outputLabel styleClass="labelStyle">Welcome</p:outputLabel>
+		<p:outputLabel styleClass="labelStyle">Login</p:outputLabel>
+		<p:commandButton  value="Se deconnecter" styleClass="commandBStyle" image="ui-icon-document"/>
+		<p:splitButton value="Langue" styleClass="menuBStyle">
+		      <p:menuitem value="Français" url="#" />
+              <p:menuitem value="Arabe" url="#" />
+		</p:splitButton>
+		</p:toolbarGroup> 
+        </p:toolbar> 
+	</h:form>
+	</div><!-- #navigation -->
+          
+</h:body>
+</ui:composition>
+</html>

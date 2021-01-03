@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:sec="http://www.springframework.org/security/tags">
+    <h:head>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/userTemplate.css" />
+    </h:head>
+    <h:body>
+    	
+    <ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+    	
+   <ui:define name="loginame">
+   
+  <h:outputFormat value="Welcome, {0}">
+      <f:param value="#{loginBean.username}" />
+   </h:outputFormat>
+   </ui:define>	
+   <ui:define name="contentGauche"> 		  
+     <div id= "contenuGauche4">
+		<p:fieldset legend="Gestion Profil" style="margin:-17px 0px 0px 0px; border:none " styleClass="myFieldset" >		     
+          <p:commandLink action="profil" styleClass="profilButtonStyle" >
+           <h:graphicImage value="/images/mon_profil.png" />
+         </p:commandLink>
+			<br/>
+          <p:commandLink action="compte" styleClass="accountButtonStyle">
+           <h:graphicImage value="/images/mon_compte.png" />
+         </p:commandLink>
+	
+		</p:fieldset>	
+	 </div> 		
+   </ui:define>	
+    
+ 
+<ui:define name="contentDroitGeneral">
+	<div id="contenuDroit4">
+     <p:graphicImage value="/images/UserPage.jpg" styleClass ="styleImgContDroit" />
+    </div>
+     
+</ui:define>	
+   
+    </ui:composition>
+    	
+    </h:body>
+
+</html>

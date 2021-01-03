@@ -1,0 +1,150 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ---------- FONTAWESOME ---------- */
+/* ---------- http://fortawesome.github.com/Font-Awesome/ ---------- */
+/* ---------- http://weloveiconfonts.com/ ---------- */
+
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* ---------- ERIC MEYER'S RESET CSS ---------- */
+/* ---------- http://meyerweb.com/eric/tools/css/reset/ ---------- */
+
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+
+/* ---------- FONTAWESOME ---------- */
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+/* ---------- GENERAL ---------- */
+
+body {
+	/*
+	background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Safari 5.1 to 6.0 *
+    background: -o-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Opera 11.1 to 12.0 *
+    background: -moz-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Firefox 3.6 to 15 *
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /* Standard syntax (must be last) */
+
+    
+background: rgba(255,255,255,1);
+background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(55%, rgba(239,236,248,1)), color-stop(65%, rgba(228,225,245,1)), color-stop(100%, rgba(218,216,243,1)));
+background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dad8f3', GradientType=1 );
+    
+
+    	
+	color: #000;
+	font-family: "Varela Round", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+.ui-inputfield {
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #a89fe5 !important;
+	font-family: "Varela Round" !important, Arial !important, Helvetica !important, sans-serif !important;
+	font-size: 14px !important;
+	line-height: 1.5em !important;
+	font-weight: normal !important;
+	-webkit-appearance: none !important;
+	background-color: #ffffff !important;
+	color: #000000  !important;
+	padding: 4px 10px !important; 
+	width: 328px !important; 
+	-webkit-border-radius: 3px !important;
+	-moz-border-radius: 3px !important;
+	border-radius: 3px !important;
+	box-shadow: 0 2px 2px #a89fe5 !important;
+	
+ 
+	
+	
+	
+	
+}
+
+.ui-button {
+	/* background-color: #33cc77;*/
+	background-color: #a89fe5 !important;
+	color: #fff !important;
+	display: block !important;
+	margin:  0 auto !important;
+	padding: -4px  0 !important;
+	width: 130px !important;
+	font-family: "Varela Round" !important, Arial !important, Helvetica !important, sans-serif !important;
+	font-size: 16px !important;
+	font-weight: normal !important;
+	line-height: 1.5em !important;
+	-webkit-border-radius: 20px !important;
+	-moz-border-radius: 20px !important;
+	border-radius: 3px !important;
+	border: 1px solid #a89fe5 !important; 
+	cursor: pointer !important;
+    box-shadow: 0 2px 2px #a89fe5 !important;
+    transition: 0.2s ease-out !important;
+   
+}
+/* ---------- LOGIN ---------- */
+
+#login {
+	margin: 100px auto;
+	max-width: 400px;
+	
+}
+
+#login h2 {
+	/*background-color: #f95252;*/
+	background-color: #a89fe5 ;
+	-webkit-border-radius: 20px 20px 0 0;
+	-moz-border-radius: 20px 20px 0 0;
+	border-radius: 20px 20px 0 0;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 20px 26px;
+	text-align:left;
+}
+
+#login h2 span[class*="fontawesome-"] {
+	margin-right: 10px;
+	margin-left : -8px;
+}
+
+#login fieldset {
+	background-color: #fff;
+	-webkit-border-radius: 0 0 20px 20px;
+	-moz-border-radius: 0 0 20px 20px;
+	border-radius: 0 0 20px 20px;
+	padding: 20px 24px;
+	
+}
+
+#login fieldset p {
+	color: #777;
+	margin-bottom: 14px;
+	
+}
+
+#login fieldset p:last-child {
+	margin-bottom: 0px;
+	
+}
+/*
+#divImage{
+	float:left ;
+	border: solid 1px X000000 ;
+    }
+*/
+/*
+#divAuth{
+	border: solid 1px X000000 ;
+}
+*/
+

@@ -1,0 +1,257 @@
+@CHARSET "UTF-8";
+/* ==============================================
+   FEUILLE DE STYLES DES GABARITS HTML/CSS --- 01
+   © Elephorm & Alsacreations.com
+   Conditions d'utilisation:
+   http://creativecommons.org/licenses/by/2.0/fr/
+   ============================================== */
+
+
+/* --- COULEURS --- */
+
+/* Note: vous pouvez modifier simplement l'aspect de ce gabarit en modifiant
+   uniquement les couleurs de fond (propriétés background) et les couleurs
+   du texte (propriété color).
+   Pour modifier la disposition des blocs, voir plus bas dans la feuille de
+   styles la partie «positionnement». */
+
+/* Général */
+
+html{
+margin: 0 auto;
+height:100%;
+width:100%;
+
+}
+
+
+body {
+	color: #000;
+	
+	background: rgba(255,255,255,1);
+background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(55%, rgba(239,236,248,1)), color-stop(65%, rgba(228,225,245,1)), color-stop(100%, rgba(218,216,243,1)));
+background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(239,236,248,1) 55%, rgba(228,225,245,1) 65%, rgba(218,216,243,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dad8f3', GradientType=1 );
+
+font-family: Verdana, "Bitstream Vera Sans", "Lucida Grande", sans-serif; /* 3 */
+font-size: .8em; /* -> 4 */
+
+}
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+	margin: 1em 0 .5em 0; /* -> 6 */
+}
+h1, h2 {
+	font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
+	font-weight: normal; /* -> 7 */
+}
+h1 {
+	font-size: 3em; /* -> 8 */
+	font-style: italic;
+}
+h2 {font-size: 1.8em;}
+h3 {font-size: 1.2em;}
+h4 {font-size: 1em;}
+
+
+
+
+
+/* En-tête */
+#entete {
+	background: #dad8f3;
+	
+}
+
+/* Navigation */
+#navigation {
+	background: inherit;
+	
+}
+
+.ui-toolbar.toolbarStyle{
+	background: inherit;
+	border-style: solid ;
+	border-width: 1px ;
+	border-color: #a89fe5 ;
+	padding: 8px 0;
+	box-shadow:  2px 2px 2px 0px #dad8f3;
+}
+
+.ui-outputlabel.labelStyle {
+	margin-right: 2px;
+	margin-left: 2px;
+	
+}
+.ui-button.commandBStyle {
+	margin-right: 10px;
+	margin-left: 15px;
+	background-color: #dad8f3;
+	color: #000000;
+	box-shadow: 0px 0px 8px #a89fe5;
+	
+}	 
+ 
+.ui-splitbutton.menuBStyle .ui-button{
+	background-color: #dad8f3 ;
+	color: #000000 ;
+	box-shadow: 0px 0px 8px #a89fe5;
+	margin: 0px;
+}
+
+.ui-menu.ui-menu-dynamic{
+	background-color: #dad8f3 ;
+	color: #000000 ;
+	box-shadow: 0px 0px 5px #dad8f3;
+	
+	
+}
+
+.ui-menu .ui-menuitem-link:hover{
+	background-color:  #dad8f3;
+	
+}
+
+/* Contenu principal */
+#contenu {
+	color: #000000;
+	/*background: inherit; */
+	border-style: none ;
+	/*
+	border-width: 1px ;
+	border-color: #a89fe5 ; 
+	*/
+}
+
+.styleImageHome{
+	margin:0 ;
+	padding:0;
+	width : 100%;
+	height :111%;
+	opacity :0.7;
+}
+
+                    /* Pied de page */
+#pied {
+	color: #000000;
+	
+	
+}
+
+
+              /* --- POSITIONNEMENT --- */
+
+                       /* Page */
+body {
+	padding:0;
+    margin:0 auto;
+    height:100%;
+    width:100%;
+	
+}
+
+/* Container Global */
+#global{
+padding:0;
+height:100%;
+width:100%;
+margin:0 auto;
+height: -webkit-calc(100% - 100px);  /* para Chrome */
+  height: -moz-calc(100% - 100px);     /* para Firefox */
+  height: calc(100% - 100px);          /* para suporte nativo */
+}
+
+                 /* En-tête */
+
+#entete {
+	/*padding: 0 20px 10px 20px; */
+	margin:0 auto;
+	width:100%;
+    min-height:8%;
+    padding:0;
+
+}
+#entete h1 {
+	margin: 0 auto;
+	padding: 0 0 10px 0;
+	text-align:center;
+}
+
+           /* Menu de navigation */
+           
+#navigation {
+	/*padding: 12px 15px;*/
+	margin:0 auto;
+	width:100%;
+    min-height:8%;
+    padding:0;
+}
+
+
+
+                              /* Contenu */
+
+#contenu {	
+	margin:0 auto;
+	width:100%;
+    height:89%;
+    padding:0;
+}
+
+
+                            /* Pied de page */
+#pied {
+	float: right;
+	margin:0 auto;
+	padding: 0;
+    font-size: .85em;
+    min-height:8%;
+    width:100%; 
+    
+}
+
+#pied h3 {
+    /*padding: 0 10px 0 0;*/
+	text-align:center;
+}
+
+#pied h4 {
+   /* padding: 0 62px 0 0;*/
+	text-align:center;
+}
+
+
+
+
+
+/* --- NOTES ---
+
+1.	Notes que cette couleur de fond n'est apparente qu'en bas de page. Plus
+	haut, elle est masque: par la couleur de fond de l'en-tête, puis par la
+	couleur de fond du menu, puis par la couleur de fond du contenu. Seul le
+	pied de page laisse apparaitre cette couleur de fond.
+
+2.	Pour ce gabarit, on supprime l'écart entre les «bords» du navigateur et
+	le contenu, en passant le padding de l'élément BODY à zéro.
+	(Voir également la note numéro 2 dans base.css.)
+
+3.	Si les éléments de notre menu se placent horizontalement plutôt que les
+	uns en dessous des autres, c'est parce qu'ils ne sont plus affichés
+	comme des blocs (ce qui est normalement le cas des éléments LI), mais
+	comme des éléments de type en-ligne. On obtient ce comportement avec la
+	propriété "display" et la valeur "inline".
+	Le fait que nos LI se comportent comme un flot unique de texte aura deux
+	conséquences:
+	- on va pouvoir aligner le texte du menu à gauche (c'est le cas ici), à
+	  droite ou encore au centre, en jouant sur la propriété "text-align" du
+	  menu (sur l'élément UL ou sur div#navigation);
+	- certains styles ne pourront pas être appliqués... par exemple, la
+	  propriété "width" ne peut pas être utilisée pour les éléments en
+	  "display: inline".
+
+*/

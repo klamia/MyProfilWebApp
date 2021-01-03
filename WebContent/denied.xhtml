@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	template="/WEB-INF/templates/template2Principale2.xhtml">
+
+   <ui:define name="nav">
+		
+	</ui:define>
+
+	<ui:define name="content">
+		<div class="home-div">
+			
+				<div class="section-container">
+					<h:form id="formLogin" prependId="false">
+						<p:panel header="Accès non authorisé"
+							styleClass="referentiel_form_login">
+							
+
+
+								<div class="alert-error">
+									Vous n'avez pas l'accès à cette page !
+									<p:outputLabel
+										value="#{SPRING_SECURITY_LAST_EXCEPTION.message}" />
+								</div>
+								
+								
+						
+
+							<p:spacer height="5"></p:spacer>
+
+							<f:facet name="footer">
+								
+									<p:commandButton type="submit" id="login"
+										styleClass="submitStyleOk" action="#{logoutBean.logout}"
+										value="Ok"  ajax="false" />
+
+								
+							</f:facet>
+						</p:panel>
+
+					</h:form>
+				</div>
+			
+		</div>
+	</ui:define>
+</ui:composition>

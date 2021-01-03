@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/userTemplate.css" />
+    </h:head>
+    <h:body>
+    	
+<ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+
+<ui:define name="nav">
+  <div id="navigation">
+       <p:toolbar  styleClass="toolbarStyleEntete">
+		<p:toolbarGroup align="left">
+		 <p:commandButton  value="#{msg.button_accueil}" styleClass="commandBAccueil2Style" icon="ui-icon-home" action="homeUser?faces-redirect=true"/>
+		 </p:toolbarGroup>
+		<p:toolbarGroup align="right">
+		<h:outputFormat value="Welcome, {0}">
+           <f:param value="#{loginBean.username}" />
+        </h:outputFormat>
+		
+		 <p:commandButton  value="#{msg.button_profil_public}" styleClass="commandBProfil2Style" icon="ui-icon-user" action="profil-professionnel?faces-redirect=true"/>
+		<p:commandButton  value="#{msg.button_deconnexion}" styleClass="commandBDeconnect2Style" icon="ui-icon-unlocked" action="#{logoutBean.logout}"/>
+	</p:toolbarGroup> 
+        </p:toolbar> 
+       </div>
+</ui:define>	
+
+	
+   
+ <ui:define name="contentGauche"> 		  
+     
+     <div id= "contenuGauche5">
+	 <h:form id="photo1" enctype="multipart/form-data">
+	
+	 <p:graphicImage id="imageProfil"  value="#{profilsImages.image}"  style=" position:absolute; margin:80px auto ; padding:0; width:50%; height:50%; max-width:175px; max-height:205px; min-width:175px; min-height:205px " 
+	 cache="false" rendered="true">
+	 <f:param name="profilId" value="#{profilBean.editedProfil.codeProfil}"  />
+	 </p:graphicImage>
+	  
+	 <p:commandButton value="changer de photo" styleClass="buttoneditimg"  icon="ui-icon-arrowrefresh-1-w" 
+	  update=":actualisePhoto:displayePhoto"  oncomplete="PF('photoEdit').show();" />
+	
+	</h:form>
+	</div>
+	
+	  		
+   </ui:define>	
+    
+ 
+<ui:define name="contentDroit">
+	
+ <p:panel id="panelProfil2" 
+  style="margin:0; padding:0; background-image:none;  height:100%; width:100%; border:none !important;">
+  
+  <h:form id= "actua" enctype="multipart/form-data" > 
+	<p:tabView  style="width:auto; height:99%; margin:0px; padding:0px;">
+        <p:tab id="personal1" title="Informations personnelles">
+          <p:growl id="growl" showDetail="true" life="2000" />
+            
+          <p:panel style="margin:0 !important">
+              <p:panelGrid columns="4" layout="grid" styleClass="panelgridediterprofil"  >
+                
+                <h:outputText value=" Nom:  " style="color: #336699; font-weight:bold;" />
+                <p:inputText id="nom" value="#{profilBean.editedProfil.nom}" required="true" requiredMessage="#{mesg['ajoutProfil.nom']}" 
+                    validatorMessage="Le nom entré ne correspond pas au format suivant: XXX XXX ou XXX-XXX ou XXX'XXX "> 
+                     <f:ajax event="blur" render="nomMessage" />
+                     <f:validateRegex pattern="^[A-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝ]+[\ \-\']?[A-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝ]+$" /> 
+                </p:inputText>
+                 <p:message  id="nomMessage" for="nom" />
+                 <p:commandButton icon="ui-icon-arrowrefresh-1-w"  action="#{profilBean.modifierProfil}" update="growl"   styleClass="buttonedit" title="Editer nom"/>
+ 
+                <h:outputText value=" Prénom:  " style="color: #336699; font-weight:bold;" />
+               <p:inputText id="prenom" value="#{profilBean.editedProfil.prenom}" required="true" requiredMessage="#{mesg['ajoutProfil.prenom']}"
+                     validatorMessage="Le prenom entré ne correspond pas au format suivant: Xxx xxx ou Xxx-xxx ou Xxx'xxx ">
+                     <f:ajax event="blur" render="prenomMessage" />
+                     <f:validateRegex pattern="^[A-Z]{1}[a-zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[\ \-\']?[a-zàáâãäåçèéêëìíîïðòóôõöùúûüýÿA-Z]+$" /> 
+                     </p:inputText>
+                     <p:message id="prenomMessage" for="prenom" />
+                <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{profilBean.modifierProfil}" update="growl" styleClass="buttonedit" title="Editer prénom"/> 
+          
+                <h:outputText value="Sexe:  " style="color: #336699; font-weight:bold;" />
+                <p:selectOneMenu id="sexe1"   style="width:128px" 
+                    required="true" requiredMessage="#{mesg['ajoutProfil.sexe']}"
+                    var="sexe" value="#{profilBean.editedProfil.sexe}">
+                       <f:selectItem itemLabel="Select" itemValue="#{null}"/>
+                       <f:selectItem itemLabel="Masculin" itemValue="Masculin" />
+                       <f:selectItem itemLabel="Féminin" itemValue="Féminin" />
+                       
+                    </p:selectOneMenu>
+                   <p:message id="sexeMessage" for="sexe1" />
+                   <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{profilBean.modifierProfil}" update="growl" styleClass="buttonedit" title="Editer sexe"/>
+                  
+            
+                <h:outputText value="Grade Actuel:  " style="color: #336699; font-weight:bold;" />
+                <p:selectOneMenu id="grad"   style="width:195px" 
+                    required="true" requiredMessage="#{mesg['ajoutProfil.grade']}"
+                    var="grd" value="#{profilBean.editedProfil.grade}">
+                       <f:selectItem itemLabel="Select One" itemValue="#{null}"/>
+                       <f:selectItem itemLabel="Professeur" itemValue="Professeur" />
+                       <f:selectItem itemLabel="Directeur de Recherche" itemValue="Directeur de Recherche" />
+                       <f:selectItem itemLabel="Maitre de Recherche Classe A" itemValue="Maitre de Recherche Classe A" />
+                       <f:selectItem itemLabel="Maitre de Recherche Classe B" itemValue="Maitre de Recherche Classe B" />
+                       <f:selectItem itemLabel="Chargé de Recherche" itemValue="Chargé de Recherche" />
+                       <f:selectItem itemLabel="Attaché de Recherche" itemValue="Attaché de Recherche" />
+                       <f:selectItem itemLabel="Chargé d'études" itemValue="Chargé d'études" />
+                       <f:selectItem itemLabel="Ingénieur de Recherche" itemValue="Ingénieur de Recherche" />
+                       <f:selectItem itemLabel="Ingénieur Soutien à la Recherche" itemValue="Ingénieur Soutien à la Recherche" />
+                    </p:selectOneMenu>
+                 <p:message id="gradeMessage" for="grad" />
+                 <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{profilBean.modifierProfil}" update="growl" styleClass="buttonedit" title="Editer grade"/>
+
+            </p:panelGrid>
+            </p:panel>
+            
+        </p:tab>
+        
+        <p:tab id="professional1" title="Informations professionnelles">
+            <p:growl id="growl2" showDetail="true" life="2000" />
+            <p:scrollPanel styleClass="scrollediterprofil" style="width:870px; height:290px">
+          <p:panel style="margin:0 !important">
+              <p:panelGrid columns="4" layout="grid" styleClass="panelgridediterprofil">
+                    <h:outputText value="Domaines de Recherche:  " style="color: #336699; font-weight:bold;"/>
+                    <p:inputTextarea id="domaineR" rows="6" cols="45" value="#{profilBean.editedProfil.domaineRecherche}" autoResize="false"  
+                    style="overflow-scroll:true !important;">
+                    <f:ajax event="blur" render="domaineMessage" />
+                   </p:inputTextarea>
+                    <p:message id="domaineMessage" for="domaineR" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{profilBean.modifierProfil}" update="growl2" styleClass="buttonedit" title="Editer domaine de recherche"/>
+                      
+                    <h:outputText value="Projets de Recherche:  " style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea id="projetR" rows="6" cols="45" value="#{profilBean.editedProfil.projetRecherche}" autoResize="false"  >
+                    <f:ajax event="blur" render="projetMessage" />
+                    </p:inputTextarea>
+                    <p:message id="projetMessage" for="projetR" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{profilBean.modifierProfil}" update="growl2" styleClass="buttonedit" title="Editer projet de recherche"/>
+ 
+                    <h:outputText value="Activités d'enseignement:" style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea id="activiteEns" rows="6" cols="45" value="#{profilBean.editedProfil.activiteEns}" autoResize="false"/>
+                    <p:message for="activiteEns" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w"  action="#{profilBean.modifierProfil}" update="growl2" styleClass="buttonedit" title="Editer activité enseignement"/>
+                    
+                    <h:outputText value="Production Scientifique(url DL): " style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea id="dl" rows="6" cols="45" value="#{profilBean.editedProfil.urlDl}" placeholder="votre url du dépot DL"  autoResize="false" />
+                    <p:message for="dl" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{profilBean.modifierProfil}" update="growl2"  styleClass="buttonedit" title="Editer url DL"/>
+             </p:panelGrid>
+          </p:panel>
+          </p:scrollPanel>
+          
+        </p:tab>
+        
+        <p:tab id="contact1" title="Contact">
+          <p:growl id="growl6" showDetail="true" life="2000" />
+            <p:scrollPanel styleClass="scrollediterprofil" style="width:870px; height:290px">
+          <p:panel style="margin:0 !important">
+        
+          <p:panelGrid columns="4" layout="grid" styleClass="panelgrid1Style">   
+                    
+                    <h:outputText style="color: #336699; font-weight:bold; "
+						value="Division ou département de Recherche actuel:" />
+				    <p:inputText id="dvsid" value="#{profilBean.editedProfil.division.intituleDivision}" 
+				    style="width:350px;" readonly="true"/>
+				    <p:spacer/>
+				    <p:commandButton update=":actualiseDivision:displayeDivision"  oncomplete="PF('divEdit').show();" icon="ui-icon-arrowrefresh-1-w"  styleClass="buttonedit" title="Editer division/dept de recherche"/>
+				     
+				    
+                    
+                    <h:outputText value="Email Professionnel: " style="color: #336699; font-weight:bold;" />
+                    <p:inputText id="email" value="#{profilBean.editedProfil.email}" required="true" requiredMessage="#{mesg['ajoutProfil.email']}"
+                    validatorMessage="L'adresse email entrée n'est pas valide">
+                    <f:ajax event="blur" render="emailMessage" />
+                    <f:validateRegex pattern="^[a-z]{2,}[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"/>
+                    </p:inputText>
+                     <p:message id="emailMessage" for="email" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w"  action="#{profilBean.modifierProfil}" update="growl6" styleClass="buttonedit" title="Editer email"/>
+ 
+                    <h:outputText value="Numéro de Poste: " style="color: #336699; font-weight:bold;" />
+                    <p:inputText id="poste" value="#{profilBean.editedProfil.poste}" />
+                    <p:message for="poste" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w"  action="#{profilBean.modifierProfil}" update="growl6"   styleClass="buttonedit" title="Editer Num Poste"/>
+ 
+                                        
+                    <h:outputText value="Mobile: " style="color: #336699; font-weight:bold;" />
+                    <p:inputMask id="mobile" value="#{profilBean.editedProfil.mobile}" mask="+213 (0)999-99-99-99"/>
+                    <p:message for="mobile" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w" action="#{profilBean.modifierProfil}" update="growl6" styleClass="buttonedit" title="Editer tel mobile"/>
+                    
+                    <h:outputText value="Numéro de Bureau: " style="color: #336699; font-weight:bold;" />
+                    <p:inputText id="bureau" value="#{profilBean.editedProfil.bureau}" />
+                    <p:message for="bureau" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w"  action="#{profilBean.modifierProfil}" update="growl6"   styleClass="buttonedit" title="Editer num Bureau"/>
+                    
+                    
+                    <h:outputText value="Adresse Professionnelle: " style="color: #336699; font-weight:bold;" />
+                    <p:inputTextarea  rows="6" cols="45" id="adresse" value="#{profilBean.editedProfil.adresse}" autoResize="false" />
+                    <p:message for="adresse" />
+                    <p:commandButton icon="ui-icon-arrowrefresh-1-w"  action="#{profilBean.modifierProfil}" update="growl6"   styleClass="buttonedit" title="Editer adresse"/>
+          
+          </p:panelGrid>
+       </p:panel>
+          </p:scrollPanel>
+        </p:tab>
+    </p:tabView>
+	
+ </h:form>
+
+  <h:form id="actualisePhoto" enctype="multipart/form-data" >
+            <p:dialog header="Modification de photo" widgetVar="photoEdit" resizable="false" id="editPhoto">
+                <p:growl id="growl9" showDetail="true" sticky="false" life="1000"/>
+                <h:panelGrid id="displayePhoto" columns="3" cellpadding="4" style="margin:0 auto;">
+ 
+                    <f:facet name="header">
+                        
+                    </f:facet>
+ 
+                   <h:outputText  value="Photo d'identité: " style="color: #336699; font-weight:bold;" />
+                   <p:fileUpload fileUploadListener="#{profilBean.handleFileUploadSecond}" update="imguploaded"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileLimit="10" /> 
+                   <p:graphicImage id="imguploaded" value ="#{profilBean.imagePhoto}" style="height:120px; width:120px; "
+                   cache="false" rendered="true" />	
+					
+                </h:panelGrid>
+                <p:separator/>
+                <br/>
+                <p:commandButton value="Enregistrer" update="growl9, photo1:imageProfil" action="#{profilBean.modifierProfil}" oncomplete="PF('photoEdit').hide();"/>
+            </p:dialog>
+   </h:form>
+
+   <h:form id="actualiseDivision" >
+               <p:dialog header="Modification de Division de recherche" widgetVar="divEdit" resizable="false" id="editDivision">
+                <p:growl id="growl10" showDetail="true" sticky="false" life="2000"/>
+                <h:panelGrid id="displayeDivision" columns="1" cellpadding="4" style="margin:0 auto;">
+ 
+                    <f:facet name="header">
+                        
+                    </f:facet>
+                     
+                      
+				   <h:outputText style="color: #336699; font-weight:bold;"
+						value="Divisions et Départements de Recherche :" />
+				   <p:selectOneMenu id="divisionid" value="#{profilBean.editedProfil.division}" converter="#{divisionConverter}"
+					 panelStyle="width:150px" effect="fade" 
+					 style="width:350px" filter="true"
+						filterMatchMode="startsWith">
+						
+						<f:selectItem itemLabel="Select One" itemValue=""  />
+						<f:selectItems value="#{autoCompleteBean.selectItemDivisions}"/>
+						 
+					</p:selectOneMenu>            
+                     
+                </h:panelGrid>
+                <p:separator/>
+                <br/>
+                <p:commandButton value="Enregistrer" update="actua:j_idt28:dvsid, growl10" action="#{profilBean.modifierProfil}" oncomplete="PF('divEdit').hide();"/>
+            </p:dialog>
+
+   </h:form>
+
+</p:panel>	
+ 
+     
+</ui:define>
+</ui:composition>
+    	
+    </h:body>
+
+</html>

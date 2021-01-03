@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	template="/WEB-INF/templates/templateLogin.xhtml">
+
+   
+
+	<ui:define name="content">
+		
+
+								<div class="alert-error">
+									Etat HTTP 403 - Access is denied.
+									<p:outputLabel
+										value="#{SPRING_SECURITY_LAST_EXCEPTION.message}" />
+								</div>
+								
+								
+							
+		
+	</ui:define>
+</ui:composition>
